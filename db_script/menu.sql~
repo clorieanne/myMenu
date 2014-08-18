@@ -1,0 +1,7 @@
+create table myMenu
+(
+ menuid int primary key,
+ menuname text,
+ menucost text
+);
+
