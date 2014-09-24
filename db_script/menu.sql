@@ -21,8 +21,8 @@ $$
 
 
   if v_menuid isnull then
-  insert into addmenu(menuid, menuname, menucost) values (p_menuid, p_menuname, p_menucost)
-
+  insert into menu(menuid, menuname, menucost) 
+  values (p_menuid, p_menuname, p_menucost);
   else
   update menu
   set menuname = p_menuname
@@ -36,9 +36,9 @@ $$
   end;
 
 $$
-  language 'plpgsql'
+  language 'plpgsql';
 --How to Use;
---SELECT addmenu(menuid, menuname, menucost)
+--SELECT * from addmenu(menuid, menuname, menucost)
 --view
 
 create or replace function
@@ -46,18 +46,19 @@ create or replace function
 returns setof record as
 
 $$
-  select menuid, menuname, menucost from menu 
+  select menuname, menucost from menu 
 where menuid = $1;
 $$
-  language 'sql'
+language 'sql';
 
-addmenu(menuid, menuname, menucost) values (1, Pork Sinigang, 315)
-addmenu(menuid, menuname, menucost) values (2, Fish Sinigang, 345)
-addmenu(menuid, menuname, menucost) values (3, Prawn, 395)
-addmenu(menuid, menuname, menucost) values (4, Adobo, 315)
-addmenu(menuid, menuname, menucost) values (5, Tinolang Manok, 315)
-addmenu(menuid, menuname, menucost) values (6, Bulalo Soup, 395)
-addmenu(menuid, menuname, menucost) values (7, Crispy Pat, 595)
-addmenu(menuid, menuname, menucost) values (8, Pancit Canton, 195)
-addmenu(menuid, menuname, menucost) values (9, Bicol Express, 315)
-addmenu(menuid, menuname, menucost) values (10, Bistik Tagalog, 315)
+
+--select * from addmenu(1, Pork Sinigang, 315)
+--select * from addmenu(2, Fish Sinigang, 345)
+--select * from addmenu(3, Prawn, 395)
+--select * from addmenu(4, Adobo, 315)
+--select * from addmenu(5, Tinolang Manok, 315)
+--select * from addmenu(6, Bulalo Soup, 395)
+--select * from addmenu(7, Crispy Pat, 595)
+--select * from addmenu(8, Pancit Canton, 195)
+--select * from addmenu(9, Bicol Express, 315)
+--select * from addmenu(10, Bistik Tagalog, 315)
